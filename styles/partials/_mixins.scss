@@ -1,0 +1,158 @@
+// mixins.scss
+
+@use './variables' as *;
+
+// Media query mixins
+
+@mixin mobile {
+    @media (max-width: #{$breakpoint-tablet - 1px}) {
+        @content;
+    }
+}
+
+@mixin tablet-and-up {
+    @media (min-width: #{$breakpoint-tablet}) {
+        @content;
+    }
+}
+
+@mixin desktop-and-up {
+    @media (min-width: #{$breakpoint-desktop}) {
+        @content;
+    }
+}
+// Font mixins
+
+// Page Header
+@mixin text-page-header {
+    font-family: $font-primary;
+    font-size: 1.5rem;    
+    line-height: 2rem;    
+    font-weight: 700;
+
+    @include tablet-and-up {
+        font-size: 3.75rem;    
+        line-height: 4.25rem;  
+    }
+}
+
+// Section Header
+@mixin text-section-header {
+    font-family: $font-primary;
+    font-size: 1.5rem;    
+    line-height: 2rem;    
+    font-weight: 700;
+
+    @include tablet-and-up {
+        font-size: 2.25rem;    
+        line-height: 2.75rem;  
+    }
+}
+
+// Subheader
+@mixin text-subheader {
+    font-family: $font-primary;
+    font-size: 0.875rem;    
+    line-height: 1.375rem;  
+    font-weight: 600;
+
+    @include tablet-and-up {
+        font-size: 1.5rem;    
+        line-height: 2rem;    
+        font-weight: 500;     
+    }
+}
+
+// Body Copy
+@mixin text-body {
+    font-family: $font-primary;
+    font-size: 0.8125rem;  
+    line-height: 1.125rem; 
+    font-weight: 400;
+
+    @include tablet-and-up {
+        font-size: 0.875rem;   
+        line-height: 1.375rem; 
+    }
+}
+
+// Body Copy Bold
+@mixin text-body-bold {
+    @include text-body;
+    font-weight: 700;
+}
+
+// Footer Copy
+@mixin text-footer {
+    font-family: $font-primary;
+    font-size: 0.8125rem;  
+    line-height: 1.125rem; 
+    font-weight: 400;
+
+    @include tablet-and-up {
+        font-size: 0.875rem;   
+        line-height: 1.375rem; 
+    }
+}
+
+// Footer Copy Bold
+@mixin text-footer-bold {
+    @include text-footer;
+    font-weight: 700;
+}
+
+// Labels & Buttons
+@mixin text-labels {
+    font-family: $font-primary;
+    font-size: 0.625rem; 
+    line-height: 1.25rem; 
+    font-weight: 700;
+
+    @include tablet-and-up {
+        font-size: 0.75rem;   
+        line-height: 1.25rem; 
+    }
+}
+
+// Section Padding Mixin
+
+@mixin padding-before-headlines {
+    padding-top: $padding-before-headlines-mobile;
+
+    @include tablet-and-up {
+        padding-top: $padding-before-headlines-tablet;
+    }
+}
+
+@mixin padding-after-headlines {
+    padding-bottom: $padding-after-headlines-mobile;
+
+    @include tablet-and-up {
+        padding-bottom: $padding-after-headlines-tablet;
+    }
+}
+
+@mixin padding-side {
+    padding-right: $padding-side-mobile;
+    padding-left: $padding-side-mobile;
+
+    @include tablet-and-up {
+        padding-right: $padding-side-tablet;
+        padding-left: $padding-side-tablet;
+    }
+
+    @include desktop-and-up {
+        padding-right: $padding-side-desktop;
+        padding-left: $padding-side-desktop;
+    }
+}
+
+@mixin padding-between-componenets {
+    padding-top: $padding-between-componenets-mobile;
+    padding-bottom: $padding-between-componenets-mobile;
+
+    @include tablet-and-up {
+        padding-top: $padding-between-componenets-tablet;
+        padding-bottom: $padding-between-componenets-tablet;
+    }
+}

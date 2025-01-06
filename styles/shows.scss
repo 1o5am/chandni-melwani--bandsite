@@ -1,0 +1,198 @@
+@use 'bio';
+@use './partials/variables' as *;
+@use './partials/mixins' as *;
+
+.hero {
+   background: url('../assets/images/hero-shows.jpg') center/cover no-repeat;
+   
+    &__content {
+        position: relative;
+        z-index: 1;
+        padding: 2rem 0;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        @include tablet-and-up {
+            padding: 3rem 0;
+            max-width: 80%;
+        }
+
+        @include desktop-and-up {
+            max-width: 60%;
+            padding-top: 4rem;
+        }
+    }
+
+   &__album {
+       @include text-subheader;
+       margin-bottom: 1rem;
+       color: $color-primary-white;
+   }
+
+   &__title {
+    @include text-page-header;
+    margin-bottom: 2rem;
+    text-align: left;
+    width: 40%;
+    color: $color-primary-white;
+
+    @include tablet-and-up {
+         width: 80%;
+     }
+
+     @include desktop-and-up {
+         width: 100%;
+     }
+    }
+
+
+   &__title-soundcloud-container {
+       width: 100%;
+       display: flex;
+       flex-direction: column;
+       align-items: flex-start;
+
+
+       @include desktop-and-up {
+       display: flex;
+       align-items: flex-start;
+       flex-direction: row;
+       }
+    }
+       
+   &__soundcloud {
+       width: 100%;
+       margin-top: 1.5rem;
+
+       @include tablet-and-up {
+           max-width: 80%;
+       }
+
+       @include desktop-and-up {
+           max-width: 60%;
+       }
+    }
+}
+
+.shows {
+   @include padding-side;
+   padding-top: $padding-between-componenets-mobile;
+   padding-bottom: $padding-between-componenets-mobile;
+   background-color: $color-primary-white;
+
+   @include tablet-and-up {
+       padding-top: $padding-between-componenets-tablet;
+       padding-bottom: $padding-between-componenets-tablet;
+   }
+
+   &__title {
+       @include text-section-header;
+       padding-bottom: $padding-after-headlines-mobile;
+
+       @include tablet-and-up {
+           padding-bottom: $padding-after-headlines-tablet;
+       }
+   }
+
+   &__container {
+       display: flex;
+       flex-direction: column;
+       gap: 1rem;
+
+       @include tablet-and-up {
+           gap: 0;
+       }
+   }
+
+   &__header {
+       display: none;
+
+       @include tablet-and-up {
+           display: grid;
+           grid-template-columns: 1fr 1fr 1fr auto;
+           padding: 0 1.5rem;
+           margin-bottom: 1rem;
+           column-gap: 2rem;
+       }
+
+       &-cell {
+           color: $color-primary-silver;
+           @include text-labels;
+           text-transform: uppercase;
+       }
+   }
+}
+
+.show {
+   padding: 1rem;
+   border-bottom: 1px solid $color-secondary-mercury;
+
+   @include tablet-and-up {
+       display: grid;
+       grid-template-columns: 1fr 1fr 1fr auto;
+       gap: 2rem;
+       align-items: center;
+       padding: 1.5rem;
+   }
+
+   &__label {
+       color: $color-primary-silver;
+       @include text-labels;
+       margin-bottom: 0.25rem;
+       text-transform: uppercase;
+
+       @include tablet-and-up {
+           display: none;
+       }
+   }
+
+   &__info {
+       margin-bottom: 1rem;
+
+       @include tablet-and-up {
+           margin-bottom: 0;
+       }
+
+       &--date {
+           @include text-body-bold;
+       }
+
+       &--venue,
+       &--location {
+           @include text-body;
+       }
+   }
+
+   &__button {
+       width: 100%;
+       padding: 0.75rem;
+       background-color: $color-primary-black;
+       color: $color-primary-white;
+       border: none;
+       border-radius: $cta-button-radius;
+       @include text-labels;
+       font-size: 1rem;
+       text-transform: uppercase;
+       cursor: pointer;
+       transition: background-color 0.3s ease;
+
+       @include tablet-and-up {
+           width: auto;
+           min-width: $cta-button-min-width-desktop-tablet;
+           padding: 0.75rem $cta-button-min-padding-desktop-tablet-left-right;
+       }
+
+       &:hover {
+           background-color: $color-secondary-dark-black;
+       }
+   }
+
+   &:hover {
+       background-color: $color-secondary-alabaster;
+   }
+
+   &--selected {
+       background-color: $color-secondary-mercury;
+   }
+}

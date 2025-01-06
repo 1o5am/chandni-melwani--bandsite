@@ -1,0 +1,66 @@
+// variables.scss
+
+// 1. Text styles 
+
+$font-primary: 'Nunito Sans', sans-serif;
+
+// 2. Colors
+
+$color-primary-black: #323232;
+$color-primary-silver: #AFAFAF;
+$color-primary-white: #FFFFFF;
+$color-secondary-dark-black: #000000;
+$color-secondary-mercury: #E1E1E1;
+$color-secondary-alabaster: #FAFAFA;
+
+// 3. Breakpoints
+
+$breakpoint-tablet: 48rem;  
+$breakpoint-desktop: 80rem;  
+
+// Image Dimensions
+$logo-height: 1.25rem;
+$logo-width: 7.5rem;
+
+// 4. Spacing
+
+// Mobile
+
+$padding-side-mobile: 1rem;                     
+$padding-before-headlines-mobile: 1.5rem;           
+$padding-after-headlines-mobile: 1rem;          
+$padding-between-componenets-mobile: 1rem;      
+
+// Desktop & Tablet
+
+$padding-side-tablet: 2.25rem;                 
+$padding-before-headlines-tablet: 3rem;         
+$padding-after-headlines-tablet: 2.25rem;       
+$padding-between-componenets-tablet: 2.25rem;  
+
+// Desktop Side
+$padding-side-desktop: 7rem;
+
+// 5. CTA Button
+
+$cta-button-height: 2.5rem;
+$cta-button-radius: 0.25rem;
+
+// $primary-cta-buttom-colour: $color-primary-black;
+$primary-cta-buttom-text-color: $color-primary-white;
+
+$primary-cta-button-hover-colour: $color-secondary-dark-black;
+$primary-cta-button-hover-text-color: $color-primary-white;
+
+// Desktop & Tablet
+
+$cta-button-min-width-desktop-tablet: 9.375rem;
+$cta-button-min-padding-desktop-tablet-left-right: 2rem;
+
+
+
+
+    
+
+
+

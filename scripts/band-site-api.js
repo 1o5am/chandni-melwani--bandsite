@@ -22,7 +22,7 @@ class BandSiteApi {
 
     async getComments() {
         try {
-            const repose = await axios.get(
+            const response = await axios.get(
                 `${this.baseURL}comments?api_key=${this.apiKey}`
             );
             return response.data.sort((a,b) => b.timesteamp - a.timestamp);

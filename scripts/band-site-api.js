@@ -19,4 +19,28 @@ class BandSiteApi {
             throw error;
         }
     }
+
+    async getComments() {
+        try {
+            const repose = await axios.get(
+                `${this.baseURL}comments?api_key=${this.apiKey}`
+            );
+            return response.data.sort((a,b) => b.timesteamp - a.timestamp);
+        } catch (error) {
+            console.error("Error getting comments:", error);
+            throw error;
+        }
+    }
+
+    async getShows() {
+        try {
+            const response = await axios.get(
+                `${this.baseURL}showDates?api_key=${this.apiKey}`
+            );
+            return response.data;
+        } catch (error) {
+            console.error("Error getting shows:", error);
+            throw error;
+        }
+    }
 }

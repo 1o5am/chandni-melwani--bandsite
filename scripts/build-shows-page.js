@@ -77,7 +77,7 @@ function createShowElement(show) {
     
     const venueText = document.createElement('p');
     venueText.className = 'show__info--venue';
-    venueText.textContent = show.venue;
+    venueText.textContent = show.place;
     
     venueSection.appendChild(venueLabel);
     venueSection.appendChild(venueText);

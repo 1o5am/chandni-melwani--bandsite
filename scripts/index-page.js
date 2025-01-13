@@ -56,7 +56,7 @@ const displayComments = (comments) => {
     });
 };
 
-// Handle form submission
+// Form submission
 commentForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     

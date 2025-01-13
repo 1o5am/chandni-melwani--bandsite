@@ -1,35 +1,48 @@
-const shows = [
-    {
-        date: 'Mon Sept 09 2024',
-        venue: 'Ronald Lane',
-        location: 'San Francisco, CA'
-    },
-    {
-        date: 'Tue Sept 17 2024',
-        venue: 'Pier 3 East',
-        location: 'San Francisco, CA'
-    },
-    {
-        date: 'Sat Oct 12 2024',
-        venue: 'View Lounge',
-        location: 'San Francisco, CA'
-    },
-    {
-        date: 'Sat Nov 16 2024',
-        venue: 'Hyatt Agency',
-        location: 'San Francisco, CA'
-    },
-    {
-        date: 'Fri Nov 29 2024',
-        venue: 'Moscow Center',
-        location: 'San Francisco, CA'
-    },
-    {
-        date: 'Wed Dec 18 2024',
-        venue: 'Press Club',
-        location: 'San Francisco, CA'
-    }
-];
+// const shows = [
+//     {
+//         date: 'Mon Sept 09 2024',
+//         venue: 'Ronald Lane',
+//         location: 'San Francisco, CA'
+//     },
+//     {
+//         date: 'Tue Sept 17 2024',
+//         venue: 'Pier 3 East',
+//         location: 'San Francisco, CA'
+//     },
+//     {
+//         date: 'Sat Oct 12 2024',
+//         venue: 'View Lounge',
+//         location: 'San Francisco, CA'
+//     },
+//     {
+//         date: 'Sat Nov 16 2024',
+//         venue: 'Hyatt Agency',
+//         location: 'San Francisco, CA'
+//     },
+//     {
+//         date: 'Fri Nov 29 2024',
+//         venue: 'Moscow Center',
+//         location: 'San Francisco, CA'
+//     },
+//     {
+//         date: 'Wed Dec 18 2024',
+//         venue: 'Press Club',
+//         location: 'San Francisco, CA'
+//     }
+// ];
+
+const API_KEY = 'chandni';
+const api = new BandSiteApi(API_KEY);
+
+function formatDate(timestamp) {
+    const date = new Date(timestamp);
+    return date.toLocaleDateString('en-US', {
+        weekday: 'short',
+        year: 'numeric',
+        month: 'short',
+        day: '2-digit'
+    });
+}
 
 function createShowElement(show) {
     const showElement = document.createElement('div');
@@ -44,7 +57,13 @@ function createShowElement(show) {
     
     const dateText = document.createElement('p');
     dateText.className = 'show__info--date';
-    dateText.textContent = show.date;
+    // dateText.textContent = show.date;
+    dateText.textContent = new Date(show.date).toLocaleDateString('en-US', {
+        weekday: 'short',
+        year: 'numeric',
+        month: 'short',
+        day: '2-digit'
+    });
     
     dateSection.appendChild(dateLabel);
     dateSection.appendChild(dateText);
@@ -96,34 +115,40 @@ function createShowElement(show) {
     return showElement;
 }
 
-function initializeShows() {
+async function initializeShows() {
     const showsContainer = document.getElementById('shows-container');
     if (!showsContainer) {
         console.error('Shows container not found!');
         return;
     }
 
-    const header = document.createElement('div');
-    header.className = 'shows__header';
-    
-    const headers = ['DATE', 'VENUE', 'LOCATION'];
-    headers.forEach(text => {
-        const cell = document.createElement('div');
-        cell.className = 'shows__header-cell';
-        cell.textContent = text;
-        header.appendChild(cell);
-    });
+    try {
+        const shows = await api.getShows();
 
-    const spacerCell = document.createElement('div');
-    spacerCell.className = 'shows__header-cell';
-    header.appendChild(spacerCell);
+        const header = document.createElement('div');
+        header.className = 'shows__header';
+        
+        const headers = ['DATE', 'VENUE', 'LOCATION'];
+        headers.forEach(text => {
+            const cell = document.createElement('div');
+            cell.className = 'shows__header-cell';
+            cell.textContent = text;
+            header.appendChild(cell);
+        });
 
-    showsContainer.appendChild(header);
+        const spacerCell = document.createElement('div');
+        spacerCell.className = 'shows__header-cell';
+        header.appendChild(spacerCell);
 
-    shows.forEach(show => {
-        const showElement = createShowElement(show);
-        showsContainer.appendChild(showElement);
-    });
+        showsContainer.appendChild(header);
+
+        shows.forEach(show => {
+            const showElement = createShowElement(show);
+            showsContainer.appendChild(showElement);
+        });
+    } catch (error) {
+        console.error('Error loading shows:', error);
+    }
 }
 
 document.addEventListener('DOMContentLoaded', initializeShows);
